@@ -1,0 +1,12 @@
+Package: NMcalc
+Title: Basic and essential calculations for pharmacometrics
+Version: 0.0.0.9001
+Authors@R: person("Philip", "Delff", email = "philip@delff.dk",
+                  role = c("aut", "cre"))
+Maintainer: Philip Delff <philip@delff.dk>
+Description: Essentials for pharmacometrics such as AUC (trapez), (geometric) CV, and other calculations that are not part of base R.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0
