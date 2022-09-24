@@ -13,6 +13,11 @@ seqlog(from, to, length.out)
 
 \item{length.out}{length of sequence}
 }
+\value{
+A numeric vector.
+}
 \description{
-Useful for generating sequences to be plotted on log scale.
+Useful for generating sequences to be plotted on log scale. This
+is really simple - seq is run on from and to after log
+transformation, then the exponential is reported.
 }

@@ -13,30 +13,41 @@ means(
   dist.ci = "t",
   p.ci = 0.95,
   colnames = c("est", "ll", "ul"),
-  format = "df",
-  debug = F
+  format = "df"
 )
 }
 \arguments{
 \item{x}{vector to calculate the geometric mean of}
 
-\item{type}{type of mean or median. Default is arithmetic, geometric and median are available as well. Only first letters needed, so say "geo" or even "g" is enough.}
+\item{type}{type of mean or median. Default is arithmetic,
+geometric and median are available as well. Only first letters
+needed, so say "geo" or even "g" is enough.}
 
 \item{na.rm}{Remove NA's before doing calculations?}
 
-\item{z.rm}{removes zeros before calculation? Default is FALSE. Can only be TRUE if type="geometric".}
+\item{z.rm}{removes zeros before calculation? Default is
+FALSE. Can only be TRUE if type="geometric".}
 
-\item{ci}{if TRUE, a data.frame including point estimate and confidence interval returned. If FALSE, a numeric representing the mean value returned.}
+\item{ci}{if TRUE, a data.frame including point estimate and
+confidence interval returned. If FALSE, a numeric representing
+the mean value returned.}
 
-\item{dist.ci}{The distribution to use for the confidence interval. Default and only supported is "t". If type=geometric, this is applied after transformation to gaussian.}
+\item{dist.ci}{The distribution to use for the confidence
+interval. Default and only supported is "t". If
+type=geometric, this is applied after transformation to
+gaussian.}
 
-\item{p.ci}{probability covered by confidence interval. Default is 0.95}
+\item{p.ci}{probability covered by confidence interval. Default is
+0.95}
 
-\item{colnames}{If ci, this defines the column names of the resulting data frame. Default is c("est","ll","ul").}
+\item{colnames}{If ci, this defines the column names of the
+resulting data frame. Default is c("est","ll","ul").}
 
-\item{format}{The format of the result. Possible values are df and num.}
-
-\item{debug}{Start by calling debug()?}
+\item{format}{The format of the result. Possible values are df and
+num.}
+}
+\value{
+If ci=FALSE, a numeric. If ci=TRUE, a data.frame.
 }
 \description{
 calculate arithmetic or geometric mean and confidence intervals
@@ -46,12 +57,6 @@ calculate arithmetic or geometric mean and confidence intervals
 ## data.table. But it's a little complicated if you want more than
 ## the means results. This works:
 \dontrun{
-dt[,append(means(DV,ci=T),list(N=.N))]
+dt[,append(means(DV,ci=TRUE),list(N=.N))]
 }
 }
-\seealso{
-Other Calc: 
-\code{\link{CV}()},
-\code{\link{trapez}()}
-}
-\concept{Calc}

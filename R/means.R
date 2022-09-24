@@ -1,28 +1,39 @@
 ##' calculate arithmetic or geometric mean and confidence intervals
 ##'
 ##' @param x vector to calculate the geometric mean of
-##' @param type type of mean or median. Default is arithmetic, geometric and median are available as well. Only first letters needed, so say "geo" or even "g" is enough.
+##' @param type type of mean or median. Default is arithmetic,
+##'     geometric and median are available as well. Only first letters
+##'     needed, so say "geo" or even "g" is enough.
 ##' @param na.rm Remove NA's before doing calculations?
-##' @param z.rm removes zeros before calculation? Default is FALSE. Can only be TRUE if type="geometric".
-##' @param ci if TRUE, a data.frame including point estimate and confidence interval returned. If FALSE, a numeric representing the mean value returned.
-##' @param dist.ci The distribution to use for the confidence interval. Default and only supported is "t". If type=geometric, this is applied after transformation to gaussian.
-##' @param p.ci probability covered by confidence interval. Default is 0.95
-##' @param colnames If ci, this defines the column names of the resulting data frame. Default is c("est","ll","ul").
-##' @param format The format of the result. Possible values are df and num.
-##' @param debug Start by calling debug()?
+##' @param z.rm removes zeros before calculation? Default is
+##'     FALSE. Can only be TRUE if type="geometric".
+##' @param ci if TRUE, a data.frame including point estimate and
+##'     confidence interval returned. If FALSE, a numeric representing
+##'     the mean value returned.
+##' @param dist.ci The distribution to use for the confidence
+##'     interval. Default and only supported is "t". If
+##'     type=geometric, this is applied after transformation to
+##'     gaussian.
+##' @param p.ci probability covered by confidence interval. Default is
+##'     0.95
+##' @param colnames If ci, this defines the column names of the
+##'     resulting data frame. Default is c("est","ll","ul").
+##' @param format The format of the result. Possible values are df and
+##'     num.
 ##' @import stats
-##' @family Calc
+##' @return If ci=FALSE, a numeric. If ci=TRUE, a data.frame.
 ##' @export
 ##' @examples
 ##' ## means return a data.frame which makes it easy to integrate with
 ##' ## data.table. But it's a little complicated if you want more than
 ##' ## the means results. This works:
 ##' \dontrun{
-##' dt[,append(means(DV,ci=T),list(N=.N))]
+##' dt[,append(means(DV,ci=TRUE),list(N=.N))]
 ##' }
 
-
-means <- function(x,type="arithmetic",na.rm=FALSE,z.rm=FALSE,ci=FALSE,dist.ci="t",p.ci=.95,colnames=c("est","ll","ul"),format = "df",debug=F) {
+means <- function(x,type="arithmetic",na.rm=FALSE,z.rm=FALSE,ci=FALSE,
+                  dist.ci="t",p.ci=.95,colnames=c("est","ll","ul"),
+                  format = "df") {
 
     
     type <- gsub("(^ +| +$)","",type)

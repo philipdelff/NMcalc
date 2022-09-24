@@ -16,15 +16,15 @@ integer larger than 0.}
 
 \item{...}{additional arguments passed to formatC.}
 }
+\value{
+A character vector.
+}
 \description{
-round to fixed number of significant digits
+'R's built-in 'round' and 'signif'
 }
 \examples{
 x <- c(1.24e-4,1.1334e6,1.1,22.00000,10.00,1)
-signif(x,3)
-as.character(signif(x,3))
-signif2(x,3)
-signif2(x,3)
+data.frame(x,s.3=signif(x,3),sc.3=as.character(signif(x,3)),s2.3=signif2(x,3))
 signif2(c(.2,11.84),2)
 ## digits has no effect when x==0
 signif2(0,1)
@@ -33,4 +33,3 @@ signif2(0,3)
 signif2(3205,-1)
 }
 }
-\concept{DataWrangling}

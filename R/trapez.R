@@ -1,15 +1,15 @@
-##' trapezoidal AUC on linear scale
+##' trapezoidal area under the curve on linear scale
 ##' @description This is a numerical integration of y with respect to
 ##'     x by the trapezoidal method on linear scale.
 ##' @param x The vector to integrate y with respect to (typically TIME
-##'     to get AUC).
+##'     to get area under the curve).
 ##' @param y The variable to integrate.
-##' @param cum Return the cumulative trapezoidal AUC? If false
-##'     (default) a single number is returned. If true, a vector is
-##'     returned. Notice, the vector is one element shorter than x and
-##'     y. 
+##' @param cum Return the cumulative trapezoidal area under the curve?
+##'     If false (default) a single number is returned. If true, a
+##'     vector is returned. Notice, the vector is one element shorter
+##'     than x and y.
 ##' @param na.rm Remove indexes in x and y wherever x or y are NA.
-##' @family Calc
+##' @return a numeric
 ##' @export
 trapez <- function(x, y, cum=FALSE, na.rm = FALSE){
 

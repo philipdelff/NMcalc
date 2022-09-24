@@ -4,13 +4,16 @@
 \alias{CV}
 \title{Calculate coefficient of variation of data}
 \usage{
-CV(x, log = F)
+CV(x, log = FALSE)
 }
 \arguments{
 \item{x}{The data @param log If TRUE, the geometric coefficient of variation
 is calculated. This is sqrt(exp(var(log(x))-1).}
 
 \item{log}{If true, a geometric CV is derived.}
+}
+\value{
+A numeric
 }
 \description{
 Calculate coefficient of variation of data
@@ -19,9 +22,3 @@ Calculate coefficient of variation of data
 This function is intended to be used on data. For a log-normal
 THETA1*EXP(OMEGA[1]) Nonmem parameter, do CV=sqrt(exp(OMEGA[1,1])-1).
 }
-\seealso{
-Other Calc: 
-\code{\link{means}()},
-\code{\link{trapez}()}
-}
-\concept{Calc}

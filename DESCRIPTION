@@ -1,6 +1,6 @@
 Package: NMcalc
-Title: Basic and essential calculations for pharmacometrics
-Version: 0.0.0.9001
+Title: Basic and Essential Calculations for Pharmacometrics
+Version: 0.0.1
 Authors@R: person("Philip", "Delff", email = "philip@delff.dk",
                   role = c("aut", "cre"))
 Maintainer: Philip Delff <philip@delff.dk>
@@ -9,4 +9,5 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.0
+RoxygenNote: 7.2.0
+Imports: stats

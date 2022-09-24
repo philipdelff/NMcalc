@@ -2,30 +2,27 @@
 % Please edit documentation in R/trapez.R
 \name{trapez}
 \alias{trapez}
-\title{trapezoidal AUC on linear scale}
+\title{trapezoidal area under the curve on linear scale}
 \usage{
 trapez(x, y, cum = FALSE, na.rm = FALSE)
 }
 \arguments{
 \item{x}{The vector to integrate y with respect to (typically TIME
-to get AUC).}
+to get area under the curve).}
 
 \item{y}{The variable to integrate.}
 
-\item{cum}{Return the cumulative trapezoidal AUC? If false
-(default) a single number is returned. If true, a vector is
-returned. Notice, the vector is one element shorter than x and
-y.}
+\item{cum}{Return the cumulative trapezoidal area under the curve?
+If false (default) a single number is returned. If true, a
+vector is returned. Notice, the vector is one element shorter
+than x and y.}
 
 \item{na.rm}{Remove indexes in x and y wherever x or y are NA.}
+}
+\value{
+a numeric
 }
 \description{
 This is a numerical integration of y with respect to
 x by the trapezoidal method on linear scale.
 }
-\seealso{
-Other Calc: 
-\code{\link{CV}()},
-\code{\link{means}()}
-}
-\concept{Calc}
