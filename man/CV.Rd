@@ -7,10 +7,10 @@
 CV(x, log = FALSE)
 }
 \arguments{
-\item{x}{The data @param log If TRUE, the geometric coefficient of variation
-is calculated. This is sqrt(exp(var(log(x))-1).}
+\item{x}{The data}
 
-\item{log}{If true, a geometric CV is derived.}
+\item{log}{If TRUE, the geometric coefficient of variation is
+calculated. This is sqrt(exp(var(log(x))-1).}
 }
 \value{
 A numeric
@@ -19,6 +19,16 @@ A numeric
 Calculate coefficient of variation of data
 }
 \details{
-This function is intended to be used on data. For a log-normal
-THETA1*EXP(OMEGA[1]) Nonmem parameter, do CV=sqrt(exp(OMEGA[1,1])-1).
+This function is intended to be used on data. For a
+log-normal THETA1*EXP(OMEGA[1]) 'Nonmem' parameter, do
+CV=sqrt(exp(OMEGA[1,1])-1).
+}
+\examples{
+set.seed(139)
+x1 <- rnorm(1000,mean=5)
+CV(x1)
+CV(x1,log=TRUE)
+x2 <- exp(x1)
+CV(x2)
+CV(x2,log=TRUE)
 }

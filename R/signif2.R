@@ -1,10 +1,14 @@
 ##' round to fixed number of significant digits
 ##'
-##' 'R's built-in 'round' and 'signif' 
+##' Even if theoretically correct, the built-in 'R' functions 'round'
+##' and 'signif' can be confusing (see examples). 'signif2' is a
+##' simple solution that can be used for reporting results
+##' consistently.
 ##' @param x a numeric vector.
 ##' @param digits number of significant digits to round to. Must be an
 ##'     integer larger than 0.
-##' @param add pad with zeros where digits>nchar(x\[i\]). Currently not used.
+##' @param add pad with zeros where digits>nchar(x\[i\]). Currently
+##'     not used.
 ##' @param ... additional arguments passed to formatC.
 ##' @return A character vector.
 ##' @examples
@@ -14,9 +18,6 @@
 ##' ## digits has no effect when x==0
 ##' signif2(0,1)
 ##' signif2(0,3)
-##' \dontrun{
-##' signif2(3205,-1)
-##' }
 ##' @export
 
 signif2 <- function(x,digits=1,add,...){

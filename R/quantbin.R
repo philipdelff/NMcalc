@@ -23,12 +23,39 @@
 ##' there are NA's in x, all elements will be NA in result (quantiles
 ##' cannot be determined, nor can the binning of x by those
 ##' quantiles).
+##'
+##' If data is not continuous, this method may not lead to balanced
+##' distributions.
 ##' 
-##' 
+##' @return If label="num", integers. If label="interval", factors.
+##' @import data.table
 ##' @importFrom stats quantile
+##' @examples
+##' set.seed(134)
+##' library(data.table)
+##' dt1 <- data.table(x=rnorm(n=1000))
+##' dt1[,bin:=quantbin(x,nbins=4,label="num")]
+##' dt1[,int:=quantbin(x,nbins=4,label="interval")]
+##' ## perfect - flat distribution
+##' dt1[,.N,keyby=.(bin,int)]
+##' 
+##' dt2 <- data.table(x=c(rnorm(n=100000),NA))
+##' dt2[,bin:=quantbin(x,nbins=4,label="num",na.rm=TRUE)]
+##' dt2[,int:=quantbin(x,nbins=4,label="interval",na.rm=TRUE)]
+##' ## perfect - flat distribution
+##' dt2[,.N,keyby=.(bin,int)]
+##' unique(dt2[,.(bin,int)])[order(bin)]
+##' 
+##' 
+##' ## we may not get a flat distribution in case of discrete observations
+##' dt3 <- data.table(x=c(sample(1:3,100,replace=TRUE)))
+##' dt3[,bin:=quantbin(x,nbins=2,label="num",na.rm=TRUE)]
+##' dt3[,int:=quantbin(x,nbins=2,label="interval",na.rm=TRUE)]
+##' ## Not a flat distribution
+##' dt3[,.N,keyby=.(x,bin,int)]
 
-###### inform how many are put in each bin. If data is not continuous,
-###### this method may not lead to balanced distributions.
+##' @export
+
 
 quantbin <- function(x,nbins,label="num",...){
     switch(label,
@@ -45,36 +72,3 @@ quantbin <- function(x,nbins,label="num",...){
 }
 
 
-if(F){
-
-    ## tests
-    x <- c(.8,1,2,2.05)
-    findInterval(x, vec=c(1,2,2.05), rightmost.closed=TRUE)
-    cut(x, breaks=c(0.9,1,2,2.05), include.lowest=TRUE)
-
-
-    set.seed(134)
-    dt1 <- data.table(x=rnorm(n=1000))
-    dt1[,bin:=quantbin(x,nbins=4,label="num")]
-    dt1[,int:=quantbin(x,nbins=4,label="interval")]
-    ## perfect
-    unique(dt1[,.(bin,int)])[order(bin)]
-
-    dt2 <- data.table(x=c(rnorm(n=100000),NA))
-    dt2[,bin:=quantbin(x,nbins=4,label="num",na.rm=T)]
-    dt2[,int:=quantbin(x,nbins=4,label="interval",na.rm=T)]
-    ## perfect
-    unique(dt2[,.(bin,int)])[order(bin)]
-
-    dt2 <- data.table(x=c(sample(1:3,100,replace=T)))
-    dt2[,bin:=quantbin(x,nbins=2,label="num",na.rm=T)]
-    dt2[,int:=quantbin(x,nbins=2,label="interval",na.rm=T)]
-    ## Not correct 
-    unique(dt2[,.(bin,int)])[order(bin)]
-    dt2[,.N,by=.(x,bin,int)]
-
-    ## dt2[,.(unique(x),.N),keyby=.(bin,int)]
-    dt2
-
-
-}

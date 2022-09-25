@@ -12,7 +12,8 @@ signif2(x, digits = 1, add, ...)
 \item{digits}{number of significant digits to round to. Must be an
 integer larger than 0.}
 
-\item{add}{pad with zeros where digits>nchar(x[i]). Currently not used.}
+\item{add}{pad with zeros where digits>nchar(x[i]). Currently
+not used.}
 
 \item{...}{additional arguments passed to formatC.}
 }
@@ -20,7 +21,10 @@ integer larger than 0.}
 A character vector.
 }
 \description{
-'R's built-in 'round' and 'signif'
+Even if theoretically correct, the built-in 'R' functions 'round'
+and 'signif' can be confusing (see examples). 'signif2' is a
+simple solution that can be used for reporting results
+consistently.
 }
 \examples{
 x <- c(1.24e-4,1.1334e6,1.1,22.00000,10.00,1)
@@ -29,7 +33,4 @@ signif2(c(.2,11.84),2)
 ## digits has no effect when x==0
 signif2(0,1)
 signif2(0,3)
-\dontrun{
-signif2(3205,-1)
-}
 }

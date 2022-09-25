@@ -1,0 +1,10 @@
+* NMcalc todo
+** quantbin
+*** TODO Inform how many are put in each bin. 
+** means
+*** how to append in dt?
+##' @details
+##' means return a data.frame which makes it easy to integrate with
+##' data.table. But it's a little complicated if you want more than
+##' the means results. This works:
+##' dt[,append(means(DV,ci=TRUE),list(N=.N))]

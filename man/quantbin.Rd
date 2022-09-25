@@ -17,6 +17,9 @@ representation of the interval (cut).}
 
 \item{...}{additional arguments passed to quantile.}
 }
+\value{
+If label="num", integers. If label="interval", factors.
+}
 \description{
 This is simple stuff, but I can never remember the exact quantile
 and findInterval/cut commands to use. quantbin finds quantiles
@@ -35,4 +38,31 @@ in x will still result in an NA element in return. If na.rm=F and
 there are NA's in x, all elements will be NA in result (quantiles
 cannot be determined, nor can the binning of x by those
 quantiles).
+
+If data is not continuous, this method may not lead to balanced
+distributions.
+}
+\examples{
+set.seed(134)
+library(data.table)
+dt1 <- data.table(x=rnorm(n=1000))
+dt1[,bin:=quantbin(x,nbins=4,label="num")]
+dt1[,int:=quantbin(x,nbins=4,label="interval")]
+## perfect - flat distribution
+dt1[,.N,keyby=.(bin,int)]
+
+dt2 <- data.table(x=c(rnorm(n=100000),NA))
+dt2[,bin:=quantbin(x,nbins=4,label="num",na.rm=TRUE)]
+dt2[,int:=quantbin(x,nbins=4,label="interval",na.rm=TRUE)]
+## perfect - flat distribution
+dt2[,.N,keyby=.(bin,int)]
+unique(dt2[,.(bin,int)])[order(bin)]
+
+
+## we may not get a flat distribution in case of discrete observations
+dt3 <- data.table(x=c(sample(1:3,100,replace=TRUE)))
+dt3[,bin:=quantbin(x,nbins=2,label="num",na.rm=TRUE)]
+dt3[,int:=quantbin(x,nbins=2,label="interval",na.rm=TRUE)]
+## Not a flat distribution
+dt3[,.N,keyby=.(x,bin,int)]
 }

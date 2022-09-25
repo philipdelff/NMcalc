@@ -2,9 +2,11 @@
 
 export(CV)
 export(means)
+export(quantbin)
 export(seqlog)
 export(signif2)
 export(trapez)
+import(data.table)
 import(stats)
 importFrom(stats,quantile)
 importFrom(stats,sd)
