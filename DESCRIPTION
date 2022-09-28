@@ -1,10 +1,10 @@
 Package: NMcalc
-Title: Basic and Essential Calculations for Pharmacometrics
+Title: Basic Calculations for PK/PD Modeling
 Version: 0.0.1
 Authors@R: person("Philip", "Delff", email = "philip@delff.dk",
                   role = c("aut", "cre"))
 Maintainer: Philip Delff <philip@delff.dk>
-Description: Essentials for pharmacometrics such as AUC (trapez), (geometric) CV, and other calculations that are not part of base R.
+Description: Essentials for PK/PD (pharmacokinetics/pharmacodynamics) such as area under the curve, (geometric) coefficient of variation, and other calculations that are not part of base R. This is not a noncompartmental analysis (NCA) package.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
