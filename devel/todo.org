@@ -8,6 +8,10 @@
 ##' data.table. But it's a little complicated if you want more than
 ##' the means results. This works:
 ##' dt[,append(means(DV,ci=TRUE),list(N=.N))]
-** TODO logit and invlogit
+** DONE logit and invlogit
 logit <- function(x) log(x/(1-x))
 invlogit <- function(x) 1/(1+exp(-x))
+** signif2
+*** TODO Handle NA's explicitly.
+Returns a string " NA". Would be better to return <NA> and add an
+option to insert something else (like "-")
