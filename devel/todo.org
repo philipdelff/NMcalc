@@ -1,5 +1,9 @@
 * NMcalc todo
 ** quantbin
+*** TODO Include a 'between' argument
+between="ID" would mean that each value of ID should contribute with
+their single unique value. The results must be merged onto a data.tble
+with the original vectors to get the same length.
 *** TODO Inform how many are put in each bin. 
 ** means
 *** how to append in dt?
