@@ -1,6 +1,7 @@
 context("quantbin")
 
 library(data.table)
+data.table::setDTthreads(1)
 
 test_that("continuous values",{
     library(data.table)

@@ -20,7 +20,7 @@ Calculate coefficient of variation of data
 }
 \details{
 This function is intended to be used on data. For a
-log-normal THETA1*EXP(OMEGA[1]) 'Nonmem' parameter, do
+log-normal THETA1*EXP(ETA(1)) 'Nonmem' parameter, do
 CV=sqrt(exp(OMEGA[1,1])-1).
 }
 \examples{

@@ -45,6 +45,8 @@ distributions.
 \examples{
 set.seed(134)
 library(data.table)
+## CRAN requires examples to run on a single thread
+data.table::setDTthreads(1)
 dt1 <- data.table(x=rnorm(n=1000))
 dt1[,bin:=quantbin(x,nbins=4,label="num")]
 dt1[,int:=quantbin(x,nbins=4,label="interval")]
