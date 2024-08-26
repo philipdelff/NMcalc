@@ -6,6 +6,7 @@
 ##' \code{sqrt(exp(omega)-1)}.
 ##' @export
 ##' 
+
 CVlnorm <- function(omega){
     sqrt(exp(omega)-1)
 }
