@@ -4,12 +4,16 @@
 \alias{quantbin}
 \title{Bin observations by quantiles. Label by bin number or by interval.}
 \usage{
-quantbin(x, nbins, label = "num", ...)
+quantbin(x, nbins, probs, label = "num", ...)
 }
 \arguments{
 \item{x}{The observations}
 
 \item{nbins}{Number of bins to use}
+
+\item{probs}{Quantiles for construvtion of bins (optional). The
+default is to spread \code{nbins} quantiles equi-distantly across
+the observed values.}
 
 \item{label}{label="num" gives a numeric bin number
 (findInterval). label="interval" gives a character

@@ -9,6 +9,9 @@ invlogit(x)
 \arguments{
 \item{x}{a number to transform}
 }
+\value{
+A numeric
+}
 \description{
 Inverse logit function
 }

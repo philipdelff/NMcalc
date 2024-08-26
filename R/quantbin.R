@@ -7,6 +7,9 @@
 ##'
 ##' @param x The observations
 ##' @param nbins Number of bins to use
+##' @param probs Quantiles for construvtion of bins (optional). The
+##'     default is to spread `nbins` quantiles equi-distantly across
+##'     the observed values.
 ##' @param label label="num" gives a numeric bin number
 ##'     (findInterval). label="interval" gives a character
 ##'     representation of the interval (cut).
@@ -59,14 +62,25 @@
 ##' @export
 
 
-quantbin <- function(x,nbins,label="num",...){
+quantbin <- function(x,nbins,probs,label="num",...){
+
+    if(missing(probs)){
+        probs <- switch(label,
+                        num=quantile(x,probs=c(seq(0,1,length.out=nbins+1))[-1],...)
+                       ,
+                        interval=quantile(x,probs=c(seq(0,1,length.out=nbins+1)),...)
+                       ,
+                        stop("label must be either \"num\" or \"interval\"")
+                        )
+    }
+
     switch(label,
            num=findInterval(x,
-                            quantile(x,probs=c(seq(0,1,length.out=nbins+1))[-1],...),
+                            probs,
                             rightmost.closed=TRUE)
           ,
            interval=cut(x,
-                        quantile(x,probs=c(seq(0,1,length.out=nbins+1)),...),
+                        probs,
                         include.lowest=TRUE,right=FALSE)
           ,
            stop("label must be either \"num\" or \"interval\"")

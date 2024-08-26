@@ -9,6 +9,9 @@ logit(x)
 \arguments{
 \item{x}{a number to transform}
 }
+\value{
+A numeric
+}
 \description{
 Logit function
 }
