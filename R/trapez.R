@@ -36,6 +36,9 @@ trapez <- function(x, y, cum=FALSE, na.rm = FALSE){
     
     
     dx <- diff(x)
+    if(any(dx<0)){
+        warning("trapez: x is not increasing.")
+    }
     yfirst <- y[-length(y)]
     ylast <- y[-1]
 

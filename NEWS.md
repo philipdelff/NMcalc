@@ -1,3 +1,8 @@
+## New features
+* `trapez()` checks whether `x` is increasing. Thanks to Boris
+  Grinshpun for requesting.
+
+
 # NMcalc 0.0.4
 ## New features
 * `CVlnorm()` is a new function CV of log-normal dist baed on omega parameters.
